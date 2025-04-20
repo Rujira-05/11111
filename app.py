@@ -26,6 +26,10 @@ if uploaded_file is not None:
     img = Image.open(uploaded_file)
     st.image(img, caption="Uploaded Image", use_column_width=True)
 
+    # Convert to RGB if image has alpha channel (e.g., PNG with transparency)
+    if img.mode != 'RGB':
+        img = img.convert('RGB')
+
     # Preprocessing
     img = img.resize((224, 224))
     x = image.img_to_array(img)
