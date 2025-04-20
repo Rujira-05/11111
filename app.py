@@ -23,7 +23,7 @@ uploaded_file = st.file_uploader("Upload image:", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     # Display image on screen
-    img = Image.open(uploaded_file)
+    img = Image.open(uploaded_file).convert('RGB')
     st.image(img, caption="Uploaded Image", use_column_width=True)
 
 
