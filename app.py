@@ -23,10 +23,10 @@ st.title("Iamge Classification with MobileNetV2 by Rujira Moonha")
 #file upload
 upload_file = st.file_uploader("Upload image:" , type=["jpg","jpeg", "png"])
 
-if upload_file is not None:
-    #dspla image on screen
-    img = Image.open(upload_file)
-    st.image(img,caption = "Upload Image")
+if uploaded_file is not None:
+    #dsplay image on screen
+    img = Image.open(uploaded_file)
+    st.image(img,caption = "Upload Image", use_column_with=True)
     
     #preprocessing
     img = img.resize((224,224))
@@ -35,11 +35,11 @@ if upload_file is not None:
     x = preprocess_input(x)
     
     #display prediction
-    preds = model.prediction(x)
+    preds = model.predict(x)
     top_preds = decode_predictions(preds , top=3)[0]
     
     
     #dispaly prediction
     st.subheader("Prediction: ")
     for i , pred in enumerate(top_preds) :
-        st.w("f{i+1}. **{pred[1]}** - {round{pred[2]*100,2}}%")
+        st.w("f{i+1}. **{pred[1]}** - {round(pred[2]*100,2)}%")
