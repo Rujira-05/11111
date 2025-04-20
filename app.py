@@ -25,7 +25,7 @@ upload_file = st.file_uploader("Upload image:" , type=["jpg","jpeg", "png"])
 if uploaded_file is not None:
     #dsplay image on screen
     img = Image.open(uploaded_file)
-    st.image(img,caption = "Upload Image", use_column_with=True)
+    st.image(img,caption = "Upload Image", use_column_width=True)
     
     #preprocessing
     img = img.resize((224,224))
